@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://c6ihokw8co6ns"]
 
-[ext_resource type="Texture2D" uid="uid://n1k5m4hafybi" path="res://player.png" id="1_8afob"]
+[ext_resource type="Texture2D" uid="uid://n1k5m4hafybi" path="res://entities/player/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bdijaidean43j" path="res://entities/player/player.gd" id="1_dovo2"]
 [ext_resource type="PackedScene" uid="uid://dqhqvtxfet7e2" path="res://component/combat/health/health_component.tscn" id="2_bls4j"]
-[ext_resource type="PackedScene" uid="uid://c1awy0cp5o4xx" path="res://component/ability/sword_ability/sword_ability_manager/sword_ability_manager.tscn" id="2_gmlin"]
+[ext_resource type="PackedScene" uid="uid://c1awy0cp5o4xx" path="res://component/ability/sword_ability_manager/sword_ability_manager.tscn" id="2_gmlin"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8afob"]
 radius = 5.0
