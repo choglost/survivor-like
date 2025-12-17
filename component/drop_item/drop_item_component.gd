@@ -11,7 +11,7 @@ func on_died() -> void:
   if randf() > drop_percent:
     return
 
-  if drop_item==null:
+  if drop_item == null:
     return
 
   if not owner is Node2D:
@@ -20,4 +20,7 @@ func on_died() -> void:
   var drop_item_instance = drop_item.instantiate() as Node2D
   var drop_item_position = owner.global_position
   owner.get_parent().add_child(drop_item_instance)
-  drop_item_instance.global_position = drop_item_position
+  
+  # drop_item_instance.global_position = drop_item_position
+  # 解决报错
+  drop_item_instance.call_deferred("set_global_position", drop_item_position)
