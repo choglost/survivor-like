@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://6dr6u7xev6k3"]
+
+[ext_resource type="Script" uid="uid://gwpdy0xkx0pj" path="res://entities/enemy/enemy_spawner_manager.gd" id="1_tfsrl"]
+[ext_resource type="PackedScene" uid="uid://d33tqsw3ighvn" path="res://entities/enemy/rat/basic_enemy.tscn" id="2_2fj1a"]
+
+[node name="EnemySpawnerManager" type="Node"]
+script = ExtResource("1_tfsrl")
+enemy_scene = ExtResource("2_2fj1a")
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
