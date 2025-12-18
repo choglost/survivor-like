@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 
-const SPEED = 100
+const SPEED = 70
 
 @onready var health_component: Node = $HealthComponent
 
