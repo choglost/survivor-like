@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d33tqsw3ighvn"]
+[gd_scene load_steps=11 format=3 uid="uid://d33tqsw3ighvn"]
 
 [ext_resource type="Texture2D" uid="uid://b2wvc5wus45hq" path="res://entities/enemy/rat/rat.png" id="1_mgruy"]
 [ext_resource type="Script" uid="uid://bga5322vxuc4t" path="res://entities/enemy/rat/basic_enemy.gd" id="1_obku4"]
@@ -6,16 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://qmybkgajvdit" path="res://component/drop_item/drop_item_component.tscn" id="3_jindy"]
 [ext_resource type="PackedScene" uid="uid://b3kjbmh12tqm5" path="res://entities/experience/experience.tscn" id="4_v3p5g"]
 [ext_resource type="PackedScene" uid="uid://7gov0l12h7k5" path="res://component/combat/hurtbox/hurtbox_component.tscn" id="5_uveb0"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_uveb0"]
-radius = 8.0
+[ext_resource type="PackedScene" uid="uid://bpm1ot3spkr88" path="res://component/combat/hitbox/hitbox_component.tscn" id="7_3wfaa"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_obku4"]
 radius = 3.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_uveb0"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dseje"]
+radius = 7.0
+
 [node name="BasicEnemy" type="CharacterBody2D" groups=["enemy"]]
-collision_layer = 8
-collision_mask = 9
+collision_layer = 0
 motion_mode = 1
 script = ExtResource("1_obku4")
 
@@ -25,13 +28,6 @@ script = ExtResource("1_obku4")
 drop_item = ExtResource("4_v3p5g")
 health_component = NodePath("../HealthComponent")
 
-[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_uveb0")]
-health_component = NodePath("../HealthComponent")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
-position = Vector2(0, -4)
-shape = SubResource("CircleShape2D_uveb0")
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_mgruy")
 offset = Vector2(0, -4)
@@ -39,3 +35,18 @@ offset = Vector2(0, -4)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_obku4")
+
+[node name="HurtboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_uveb0")]
+collision_mask = 2
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_uveb0")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("7_3wfaa")]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_dseje")

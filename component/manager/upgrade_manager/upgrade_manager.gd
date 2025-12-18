@@ -11,7 +11,7 @@ func _ready() -> void:
 
 func on_level_up(level: int) -> void:
   var chosen_upgrade = upgrade_pool.pick_random() as AbilityUpgrade
-  if chosen_upgrade==null:
+  if chosen_upgrade == null:
     return
   
   var upgrade_screen_instance = upgrade_screen_scene.instantiate()
@@ -23,15 +23,15 @@ func on_upgrade_selected(upgrade: AbilityUpgrade) -> void:
   do_upgrade(upgrade)
 
 func do_upgrade(upgrade: AbilityUpgrade) -> void:
-  var has_upgrade = current_upgrades.has(upgrade.name)
+  var has_upgrade = current_upgrades.has(upgrade.id)
   if !has_upgrade:
-    current_upgrades[upgrade.id]={
-      "resource": upgrade,
+    current_upgrades[upgrade.id] = {
+      "resource": upgrade.id,
       "quantity": 1,
     }
   else:
     current_upgrades[upgrade.id].quantity += 1
   
-  GameEvents.emit_ability_upgrade_added(upgrade,current_upgrades)
+  GameEvents.emit_ability_upgrade_added(upgrade, current_upgrades)
 
-  # print(current_upgrades)
+  print(current_upgrades)

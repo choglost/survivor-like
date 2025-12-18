@@ -120,6 +120,7 @@ libraries = {
 autoplay = "swing"
 
 [node name="HitboxComponent" parent="." instance=ExtResource("2_5m6p0")]
+collision_layer = 2
 damage = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
