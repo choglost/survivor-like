@@ -8,3 +8,4 @@ tilemap分层
 
 重构代码 gameevent等upgrade manager等
 
+掉落物 血瓶 多种掉落 权重表

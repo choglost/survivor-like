@@ -2,7 +2,7 @@ extends Node2D
 
 class_name AxeAbility
 
-@export var axe_attack_radius: float = 70.0
+@export var axe_attack_radius: float = 50.0
 
 @onready var hitbox_component: HitboxComponent = $HitboxComponent
 
