@@ -11,7 +11,7 @@ var base_rotation = Vector2.RIGHT
 func _ready() -> void:
   base_rotation = Vector2.RIGHT.rotated(randf_range(0, PI * 2))
   var tween = create_tween()
-  tween.tween_method(axe_rotate, 0.0, 2.0, 2.5)
+  tween.tween_method(axe_rotate, 0.0, 4.0, 2.5)
   tween.tween_callback(queue_free)
 
 func axe_rotate(axe_rotation: float) -> void:
