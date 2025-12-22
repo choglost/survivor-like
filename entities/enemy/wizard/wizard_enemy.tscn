@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://bjvdbbjeajxvu"]
+
+[ext_resource type="Texture2D" uid="uid://yd85y53aj3hy" path="res://entities/enemy/wizard/wizard.png" id="1_8lq7a"]
+[ext_resource type="Script" uid="uid://bs7bl73c6uxmm" path="res://entities/enemy/wizard/wizard_enemy.gd" id="1_d6vat"]
+[ext_resource type="PackedScene" uid="uid://dqhqvtxfet7e2" path="res://component/combat/health/health_component.tscn" id="2_dfyqh"]
+[ext_resource type="PackedScene" uid="uid://7gov0l12h7k5" path="res://component/combat/hurtbox/hurtbox_component.tscn" id="2_i3ayv"]
+[ext_resource type="PackedScene" uid="uid://qmybkgajvdit" path="res://component/drop_item/drop_item_component.tscn" id="2_omhgm"]
+[ext_resource type="PackedScene" uid="uid://bpm1ot3spkr88" path="res://component/combat/hitbox/hitbox_component.tscn" id="3_omhgm"]
+[ext_resource type="PackedScene" uid="uid://b3kjbmh12tqm5" path="res://entities/experience/experience.tscn" id="3_ppnm1"]
+[ext_resource type="PackedScene" uid="uid://j1603wbxmfma" path="res://component/movement/movement_component.tscn" id="4_6yewl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6yewl"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_omhgm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ppnm1"]
+radius = 4.0
+
+[node name="WizardEnemy" type="CharacterBody2D" unique_id=1451004974 groups=["enemy"]]
+collision_layer = 64
+collision_mask = 65
+script = ExtResource("1_d6vat")
+
+[node name="HealthComponent" parent="." unique_id=2052991790 instance=ExtResource("2_dfyqh")]
+max_health = 20.0
+
+[node name="DropItemComponent" parent="." unique_id=478913263 node_paths=PackedStringArray("health_component") instance=ExtResource("2_omhgm")]
+drop_item = ExtResource("3_ppnm1")
+health_component = NodePath("../HealthComponent")
+
+[node name="MovementComponent" parent="." unique_id=481701600 instance=ExtResource("4_6yewl")]
+speed = 60.0
+acceleration = 10.0
+
+[node name="HitboxComponent" parent="." unique_id=258281884 instance=ExtResource("3_omhgm")]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=10012656]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_6yewl")
+
+[node name="HurtboxComponent" parent="." unique_id=1240434909 node_paths=PackedStringArray("health_component") instance=ExtResource("2_i3ayv")]
+collision_mask = 2
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1587221071]
+position = Vector2(0, -8)
+shape = SubResource("CircleShape2D_omhgm")
+
+[node name="Visuals" type="Node2D" parent="." unique_id=1762650948]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals" unique_id=2071174939]
+position = Vector2(0, -8)
+texture = ExtResource("1_8lq7a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=352892596]
+position = Vector2(0, -7)
+shape = SubResource("CircleShape2D_ppnm1")

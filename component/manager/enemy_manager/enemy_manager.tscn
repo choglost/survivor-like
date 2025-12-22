@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://6dr6u7xev6k3"]
+
+[ext_resource type="Script" uid="uid://gwpdy0xkx0pj" path="res://component/manager/enemy_manager/enemy_manager.gd" id="1_tfsrl"]
+[ext_resource type="PackedScene" uid="uid://d33tqsw3ighvn" path="res://entities/enemy/rat/rat_enemy.tscn" id="2_2fj1a"]
+
+[node name="EnemyManager" type="Node" unique_id=1226298623]
+script = ExtResource("1_tfsrl")
+enemy_scene = ExtResource("2_2fj1a")
+
+[node name="Timer" type="Timer" parent="." unique_id=703191347]
+wait_time = 0.5
+autostart = true

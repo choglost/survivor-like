@@ -1,0 +1,148 @@
+[gd_scene format=3 uid="uid://d33tqsw3ighvn"]
+
+[ext_resource type="Texture2D" uid="uid://b2wvc5wus45hq" path="res://entities/enemy/rat/rat.png" id="1_mgruy"]
+[ext_resource type="Script" uid="uid://bga5322vxuc4t" path="res://entities/enemy/rat/rat_enemy.gd" id="1_obku4"]
+[ext_resource type="PackedScene" uid="uid://dqhqvtxfet7e2" path="res://component/combat/health/health_component.tscn" id="3_avndc"]
+[ext_resource type="PackedScene" uid="uid://j1603wbxmfma" path="res://component/movement/movement_component.tscn" id="3_dseje"]
+[ext_resource type="PackedScene" uid="uid://qmybkgajvdit" path="res://component/drop_item/drop_item_component.tscn" id="3_jindy"]
+[ext_resource type="PackedScene" uid="uid://b3kjbmh12tqm5" path="res://entities/experience/experience.tscn" id="4_v3p5g"]
+[ext_resource type="PackedScene" uid="uid://7gov0l12h7k5" path="res://component/combat/hurtbox/hurtbox_component.tscn" id="5_uveb0"]
+[ext_resource type="PackedScene" uid="uid://bpm1ot3spkr88" path="res://component/combat/hitbox/hitbox_component.tscn" id="7_3wfaa"]
+
+[sub_resource type="Animation" id="Animation_3wfaa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_dseje"]
+resource_name = "walk"
+length = 0.26666668
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visuals/Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 0), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Visuals/Sprite2D:rotation")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.2, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.17453292519943295, 0.17453292519943295, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Visuals/Sprite2D:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ee1ac"]
+_data = {
+&"RESET": SubResource("Animation_3wfaa"),
+&"walk": SubResource("Animation_dseje")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uveb0"]
+radius = 8.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dseje"]
+radius = 7.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_obku4"]
+radius = 3.0
+
+[node name="RatEnemy" type="CharacterBody2D" unique_id=1957803812 groups=["enemy"]]
+collision_layer = 64
+collision_mask = 65
+motion_mode = 1
+script = ExtResource("1_obku4")
+
+[node name="HealthComponent" parent="." unique_id=354631060 instance=ExtResource("3_avndc")]
+
+[node name="MovementComponent" parent="." unique_id=481701600 instance=ExtResource("3_dseje")]
+
+[node name="DropItemComponent" parent="." unique_id=756513415 node_paths=PackedStringArray("health_component") instance=ExtResource("3_jindy")]
+drop_item = ExtResource("4_v3p5g")
+health_component = NodePath("../HealthComponent")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1735355616]
+libraries/ = SubResource("AnimationLibrary_ee1ac")
+autoplay = &"walk"
+
+[node name="HurtboxComponent" parent="." unique_id=482490230 node_paths=PackedStringArray("health_component") instance=ExtResource("5_uveb0")]
+collision_mask = 2
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtboxComponent" unique_id=1525600178]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_uveb0")
+
+[node name="HitboxComponent" parent="." unique_id=247559688 instance=ExtResource("7_3wfaa")]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=1432535347]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_dseje")
+
+[node name="Visuals" type="Node2D" parent="." unique_id=274515600]
+
+[node name="Sprite2D" type="Sprite2D" parent="Visuals" unique_id=1456326829]
+texture = ExtResource("1_mgruy")
+offset = Vector2(0, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1859684333]
+position = Vector2(0, -3)
+shape = SubResource("CircleShape2D_obku4")
