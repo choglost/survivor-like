@@ -8,16 +8,21 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="SurvivorLike"
 run/main_scene="uid://bkiqtt3autrub"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-GameEvents="*res://scripts/game_object/game_events.tscn"
+GameEvents="*res://scenes/autoload/game_events.tscn"
+MusicPlayer="*uid://c6qis23vebqs6"
 
 [debug]
 
@@ -33,7 +38,7 @@ window/size/viewport_width=640
 window/size/viewport_height=360
 window/size/window_width_override=1280
 window/size/window_height_override=720
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [dotnet]
 
@@ -43,13 +48,18 @@ project/assembly_name="SurvivorLike"
 
 folder_colors={
 "res://assets/": "red",
-"res://assets/images/": "purple",
+"res://assets/images/": "red",
 "res://component/": "orange",
 "res://entities/": "yellow",
+"res://export/": "gray",
 "res://resources/": "green",
 "res://scenes/": "blue",
 "res://scripts/": "purple"
 }
+
+[gui]
+
+theme/custom="uid://cvl5e8ir0oe5f"
 
 [input]
 
@@ -83,6 +93,11 @@ left_click={
 ]
 }
 
+[internationalization]
+
+locale/language_filter=["en"]
+locale/country_filter=["US"]
+
 [layer_names]
 
 2d_physics/layer_1="Terrain"
@@ -95,4 +110,3 @@ left_click={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
-2d/snap/snap_2d_transforms_to_pixel=true

@@ -1,9 +1,9 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://b4yt7a156kqrh"]
+[gd_resource type="Resource" script_class="AbilityUpgrade" format=3 uid="uid://b4yt7a156kqrh"]
 
 [ext_resource type="Script" uid="uid://43ym11mlmcvp" path="res://resources/upgrades/ability_upgrade.gd" id="1_pyxp1"]
 
 [resource]
 script = ExtResource("1_pyxp1")
 id = "sword_rate"
-name = "剑舞"
-description = "提升剑的攻击频率"
+name = "长剑"
+description = "提升长剑的攻击速度！"

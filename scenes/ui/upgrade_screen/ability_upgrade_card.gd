@@ -3,6 +3,7 @@ extends PanelContainer
 signal selected
 
 @onready var name_label: Label = $%NameLabel
+@onready var level_label: Label = $%LevelLabel
 @onready var description_label: Label = $%DescriptionLabel
 
 func _ready() -> void:
