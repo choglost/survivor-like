@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://dnc1vyqccnoen"]
+
+[ext_resource type="Script" uid="uid://dcrxvore7irt1" path="res://scenes/ui/floating_text/floating_text.gd" id="1_32222"]
+
+[node name="FloatingText" type="Node2D" unique_id=514640235]
+script = ExtResource("1_32222")
+
+[node name="Label" type="Label" parent="." unique_id=1195691515]
+custom_minimum_size = Vector2(100, 32)
+offset_left = -50.0
+offset_top = -16.0
+offset_right = 50.0
+offset_bottom = 16.0
+pivot_offset = Vector2(50, 16)
+theme_override_colors/font_outline_color = Color(0.24705882, 0.14901961, 0.19215687, 1)
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 8
+text = "199"
+horizontal_alignment = 1
+vertical_alignment = 1

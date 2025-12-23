@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://461ajgkwkt70"]
+
+[ext_resource type="Script" uid="uid://o11n0c7y7meo" path="res://component/hurt_anim_component/hurt_anim_component.gd" id="1_bmfne"]
+[ext_resource type="Material" uid="uid://b2vp276ikih5e" path="res://component/hurt_anim_component/hurt_anim_component_material.tres" id="2_bmfne"]
+
+[node name="HurtAnimComponent" type="Node" unique_id=1395826664]
+script = ExtResource("1_bmfne")
+hurt_anim_material = ExtResource("2_bmfne")

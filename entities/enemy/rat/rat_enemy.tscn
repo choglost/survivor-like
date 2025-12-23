@@ -7,7 +7,14 @@
 [ext_resource type="PackedScene" uid="uid://qmybkgajvdit" path="res://component/drop_item/drop_item_component.tscn" id="3_jindy"]
 [ext_resource type="PackedScene" uid="uid://b3kjbmh12tqm5" path="res://entities/experience/experience.tscn" id="4_v3p5g"]
 [ext_resource type="PackedScene" uid="uid://7gov0l12h7k5" path="res://component/combat/hurtbox/hurtbox_component.tscn" id="5_uveb0"]
+[ext_resource type="PackedScene" uid="uid://461ajgkwkt70" path="res://component/hurt_anim_component/hurt_anim_component.tscn" id="6_pl6kp"]
 [ext_resource type="PackedScene" uid="uid://bpm1ot3spkr88" path="res://component/combat/hitbox/hitbox_component.tscn" id="7_3wfaa"]
+[ext_resource type="Shader" uid="uid://ddtwb0e5dnls0" path="res://component/hurt_anim_component/hurt_anim_component.gdshader" id="7_xj4jm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4gbwb"]
+resource_local_to_scene = true
+shader = ExtResource("7_xj4jm")
+shader_parameter/lerp_percent = 0.0
 
 [sub_resource type="Animation" id="Animation_3wfaa"]
 length = 0.001
@@ -117,6 +124,11 @@ script = ExtResource("1_obku4")
 [node name="DropItemComponent" parent="." unique_id=756513415 node_paths=PackedStringArray("health_component") instance=ExtResource("3_jindy")]
 drop_item = ExtResource("4_v3p5g")
 health_component = NodePath("../HealthComponent")
+
+[node name="HurtAnimComponent" parent="." unique_id=1395826664 node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_pl6kp")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+hurt_anim_material = SubResource("ShaderMaterial_4gbwb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1735355616]
 libraries/ = SubResource("AnimationLibrary_ee1ac")

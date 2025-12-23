@@ -6,16 +6,13 @@
 [ext_resource type="PackedScene" uid="uid://c3340ihtyuduo" path="res://scenes/game_object/game_camera/game_camera.tscn" id="1_px18m"]
 [ext_resource type="PackedScene" uid="uid://cteefwbwm0w5b" path="res://scenes/ui/end_screen/end_screen.tscn" id="2_th5th"]
 [ext_resource type="PackedScene" uid="uid://b1hoys1w78vnn" path="res://scenes/ui/experience_bar/experience_bar.tscn" id="2_w0isb"]
-[ext_resource type="PackedScene" uid="uid://6dr6u7xev6k3" path="res://component/manager/enemy_manager/enemy_manager.tscn" id="4_8gcrf"]
+[ext_resource type="PackedScene" uid="uid://6dr6u7xev6k3" path="res://scenes/manager/enemy_manager/enemy_manager.tscn" id="4_8gcrf"]
 [ext_resource type="PackedScene" uid="uid://bwo2e4302rqns" path="res://scenes/ui/arena_time_ui/arena_time_ui.tscn" id="5_rdp1x"]
-[ext_resource type="PackedScene" uid="uid://ctmesbc3s7qjs" path="res://component/manager/upgrade_manager/upgrade_manager.tscn" id="6_k7uo0"]
-[ext_resource type="PackedScene" uid="uid://btyst4c67l28w" path="res://component/manager/arena_time_manager/arena_time_manager.tscn" id="6_nyu32"]
-[ext_resource type="Script" uid="uid://43ym11mlmcvp" path="res://resources/upgrades/ability_upgrade.gd" id="7_8x5ba"]
+[ext_resource type="PackedScene" uid="uid://ctmesbc3s7qjs" path="res://scenes/manager/upgrade_manager/upgrade_manager.tscn" id="6_k7uo0"]
+[ext_resource type="PackedScene" uid="uid://btyst4c67l28w" path="res://scenes/manager/arena_time_manager/arena_time_manager.tscn" id="6_nyu32"]
 [ext_resource type="PackedScene" uid="uid://d33tqsw3ighvn" path="res://entities/enemy/rat/rat_enemy.tscn" id="7_hxu8e"]
-[ext_resource type="Resource" uid="uid://b4yt7a156kqrh" path="res://resources/upgrades/sword_rate.tres" id="8_3348s"]
 [ext_resource type="PackedScene" uid="uid://bjvdbbjeajxvu" path="res://entities/enemy/wizard/wizard_enemy.tscn" id="8_nvumn"]
-[ext_resource type="PackedScene" uid="uid://csa4a70kdt3gt" path="res://component/manager/experience_manager/experience_manager.tscn" id="8_w0isb"]
-[ext_resource type="Resource" uid="uid://ciptsitomr6j7" path="res://resources/upgrades/rotate_axe.tres" id="11_7smn1"]
+[ext_resource type="PackedScene" uid="uid://csa4a70kdt3gt" path="res://scenes/manager/experience_manager/experience_manager.tscn" id="8_w0isb"]
 
 [node name="Main" type="Node" unique_id=3842285]
 script = ExtResource("1_3348s")
@@ -38,7 +35,6 @@ arena_time_manager = NodePath("../ArenaTimeManager")
 [node name="ExperienceManager" parent="." unique_id=1523473033 instance=ExtResource("8_w0isb")]
 
 [node name="UpgradeManager" parent="." unique_id=957368591 node_paths=PackedStringArray("experience_manager") instance=ExtResource("6_k7uo0")]
-upgrade_pool = Array[ExtResource("7_8x5ba")]([ExtResource("8_3348s"), ExtResource("11_7smn1")])
 experience_manager = NodePath("../ExperienceManager")
 
 [node name="GameCamera" parent="." unique_id=5854659 instance=ExtResource("1_px18m")]

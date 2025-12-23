@@ -1,11 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bwo2e4302rqns"]
+[gd_scene format=3 uid="uid://bwo2e4302rqns"]
 
 [ext_resource type="Script" uid="uid://c20dx11bb12pj" path="res://scenes/ui/arena_time_ui/arena_time_ui.gd" id="1_8vf48"]
 
-[node name="ArenaTimeUI" type="CanvasLayer"]
+[node name="ArenaTimeUI" type="CanvasLayer" unique_id=1540302887]
 script = ExtResource("1_8vf48")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1924151393]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -15,11 +15,11 @@ mouse_filter = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 8
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="Label" type="Label" parent="MarginContainer" unique_id=746942837]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme_override_colors/font_outline_color = Color(0.24705882, 0.14901961, 0.19215687, 1)
-theme_override_constants/outline_size = 14
+theme_override_constants/outline_size = 13
 theme_override_font_sizes/font_size = 24
 text = "text"

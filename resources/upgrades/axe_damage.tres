@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Ability" format=3 uid="uid://bjimb35k3sfqs"]
+
+[ext_resource type="PackedScene" uid="uid://t8vhewxn6oad" path="res://component/ability/axe/axe_ability_controller/axe_ability_controller.tscn" id="1_dcofh"]
+[ext_resource type="Script" uid="uid://1s65rylf8kdy" path="res://scripts/ability.gd" id="2_vls8u"]
+
+[resource]
+script = ExtResource("2_vls8u")
+ability_controller_scene = ExtResource("1_dcofh")
+id = "axe_damage"
+name = "斧-伤害"
+description = "斧头伤害+2"

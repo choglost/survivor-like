@@ -24,8 +24,7 @@ func _ready() -> void:
 
 
 func on_timer_timeout() -> void:
-  timer.start()
-
+  # timer.start()
   if player == null:
     return
 

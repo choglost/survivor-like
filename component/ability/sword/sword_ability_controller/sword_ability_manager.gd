@@ -47,10 +47,10 @@ func on_timer_timeout() -> void:
   if foreground == null:
     return
   foreground.add_child(sword_instance)
-  var enemy_direction = enemies[0].global_position - player.global_position
+  var enemy_direction_vector = enemies[0].global_position - player.global_position
 
-  sword_instance.global_position = player.global_position + enemy_direction * 0.8
-  sword_instance.rotation = enemy_direction.angle()
+  sword_instance.global_position = player.global_position + enemy_direction_vector - enemy_direction_vector.normalized() * 20
+  sword_instance.rotation = enemy_direction_vector.angle()
 
 # 技能升级
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):

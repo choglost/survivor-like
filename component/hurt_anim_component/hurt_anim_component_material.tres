@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://b2vp276ikih5e"]
+
+[ext_resource type="Shader" uid="uid://ddtwb0e5dnls0" path="res://component/hurt_anim_component/hurt_anim_component.gdshader" id="1_xd5sk"]
+
+[resource]
+resource_local_to_scene = true
+shader = ExtResource("1_xd5sk")
+shader_parameter/lerp_percent = 0.0

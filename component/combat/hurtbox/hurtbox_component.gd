@@ -11,9 +11,13 @@ class_name HurtboxComponent
 
 var hitbox_component: Area2D
 
+var floating_text_scene = preload("res://scenes/ui/floating_text/floating_text.tscn")
+
+var can_hurt: bool = true
+
 func _ready():
   area_entered.connect(on_area_entered)
-  damage_interval_timer.timeout.connect(check_damage)
+  damage_interval_timer.timeout.connect(set_can_hurt)
   damage_interval_timer.wait_time = hurt_interval
 
 func on_area_entered(other_area: Area2D):
@@ -25,9 +29,23 @@ func on_area_entered(other_area: Area2D):
 func check_damage():
   if health_component == null:
     return
-  if not damage_interval_timer.is_stopped():
-    return
   if hitbox_component == null:
     return
+  if can_hurt == false:
+    return
+  
+  # 造成伤害
   health_component.take_damage(hitbox_component.damage)
+
+  # 设置无敌时间
+  can_hurt = false
   damage_interval_timer.start()
+
+  # 展示伤害数字
+  var floating_text_instance = floating_text_scene.instantiate() as Node2D
+  get_tree().get_first_node_in_group("foreground_layer").add_child(floating_text_instance)
+  floating_text_instance.global_position = global_position + Vector2.UP * 10
+  floating_text_instance.start(str(hitbox_component.damage))
+
+func set_can_hurt():
+  can_hurt = true

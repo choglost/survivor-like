@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://6dr6u7xev6k3"]
+
+[ext_resource type="Script" uid="uid://gwpdy0xkx0pj" path="res://scenes/manager/enemy_manager/enemy_manager.gd" id="1_tfsrl"]
+
+[node name="EnemyManager" type="Node" unique_id=1226298623]
+script = ExtResource("1_tfsrl")
+
+[node name="Timer" type="Timer" parent="." unique_id=703191347]
+wait_time = 0.6
+autostart = true

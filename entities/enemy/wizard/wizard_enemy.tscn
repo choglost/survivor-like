@@ -8,6 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://bpm1ot3spkr88" path="res://component/combat/hitbox/hitbox_component.tscn" id="3_omhgm"]
 [ext_resource type="PackedScene" uid="uid://b3kjbmh12tqm5" path="res://entities/experience/experience.tscn" id="3_ppnm1"]
 [ext_resource type="PackedScene" uid="uid://j1603wbxmfma" path="res://component/movement/movement_component.tscn" id="4_6yewl"]
+[ext_resource type="PackedScene" uid="uid://461ajgkwkt70" path="res://component/hurt_anim_component/hurt_anim_component.tscn" id="6_injy7"]
+[ext_resource type="Shader" uid="uid://ddtwb0e5dnls0" path="res://component/hurt_anim_component/hurt_anim_component.gdshader" id="7_6i7ju"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g01bb"]
+resource_local_to_scene = true
+shader = ExtResource("7_6i7ju")
+shader_parameter/lerp_percent = 0.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_6yewl"]
 radius = 8.0
@@ -135,6 +142,11 @@ health_component = NodePath("../HealthComponent")
 [node name="MovementComponent" parent="." unique_id=481701600 instance=ExtResource("4_6yewl")]
 speed = 100.0
 acceleration = 30.0
+
+[node name="HurtAnimComponent" parent="." unique_id=1395826664 node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_injy7")]
+health_component = NodePath("../HealthComponent")
+sprite = NodePath("../Visuals/Sprite2D")
+hurt_anim_material = SubResource("ShaderMaterial_g01bb")
 
 [node name="HitboxComponent" parent="." unique_id=258281884 instance=ExtResource("3_omhgm")]
 collision_layer = 8

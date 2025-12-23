@@ -6,6 +6,12 @@ extends Node
 
 var current_upgrades = {} # 字典，存放技能id和当前等级
 
+# var upgrade_pool: WeightedTable = WeightedTable.new()
+
+# 预加载升级变量
+# var
+
+
 func _ready() -> void:
   experience_manager.level_up.connect(on_level_up)
 
