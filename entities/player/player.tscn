@@ -3,7 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://n1k5m4hafybi" path="res://entities/player/player.png" id="1_8afob"]
 [ext_resource type="Script" uid="uid://bdijaidean43j" path="res://entities/player/player.gd" id="1_dovo2"]
 [ext_resource type="PackedScene" uid="uid://dqhqvtxfet7e2" path="res://component/combat/health/health_component.tscn" id="2_bls4j"]
-[ext_resource type="PackedScene" uid="uid://c1awy0cp5o4xx" path="res://component/ability/sword/sword_ability_controller/sword_ability_manager.tscn" id="2_gmlin"]
+[ext_resource type="PackedScene" uid="uid://c1awy0cp5o4xx" path="res://component/ability/sword/sword_ability_controller/sword_ability_controller.tscn" id="2_gmlin"]
+[ext_resource type="PackedScene" uid="uid://j1603wbxmfma" path="res://component/movement/movement_component.tscn" id="2_qiwj3"]
 [ext_resource type="PackedScene" uid="uid://b4r54neg54xk7" path="res://scenes/ui/health_bar/health_bar.tscn" id="3_8fjmc"]
 [ext_resource type="PackedScene" uid="uid://7gov0l12h7k5" path="res://component/combat/hurtbox/hurtbox_component.tscn" id="5_fkugw"]
 
@@ -94,7 +95,7 @@ _data = {
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_gmlin"]
-radius = 87.005745
+radius = 71.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8fjmc"]
 radius = 8.0
@@ -110,13 +111,16 @@ script = ExtResource("1_dovo2")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=733549322]
 libraries/ = SubResource("AnimationLibrary_26q78")
 
+[node name="MovementComponent" parent="." unique_id=481701600 instance=ExtResource("2_qiwj3")]
+speed = 100.0
+
 [node name="HealthComponent" parent="." unique_id=2063031442 instance=ExtResource("2_bls4j")]
 max_health = 50.0
 health_bar = ExtResource("3_8fjmc")
 
-[node name="AbilityManager" type="Node" parent="." unique_id=1781434213]
+[node name="Ability" type="Node" parent="." unique_id=1781434213]
 
-[node name="SwordAbilityManager" parent="AbilityManager" unique_id=1590557650 instance=ExtResource("2_gmlin")]
+[node name="SwordAbilityController" parent="Ability" unique_id=1590557650 instance=ExtResource("2_gmlin")]
 
 [node name="PickupArea" type="Area2D" parent="." unique_id=1691518495]
 collision_layer = 32

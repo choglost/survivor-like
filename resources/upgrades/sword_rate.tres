@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AbilityUpgrade" format=3 uid="uid://b4yt7a156kqrh"]
 
-[ext_resource type="Script" uid="uid://43ym11mlmcvp" path="res://scripts/ability_upgrade.gd" id="1_pyxp1"]
+[ext_resource type="Script" uid="uid://43ym11mlmcvp" path="res://resources/upgrades/ability_upgrade.gd" id="1_pyxp1"]
 
 [resource]
 script = ExtResource("1_pyxp1")

@@ -1,9 +1,9 @@
 [gd_resource type="Resource" script_class="AbilityUpgrade" format=3 uid="uid://b7rccp88g8q0j"]
 
-[ext_resource type="Script" uid="uid://43ym11mlmcvp" path="res://scripts/ability_upgrade.gd" id="1_04we8"]
+[ext_resource type="Script" uid="uid://43ym11mlmcvp" path="res://resources/upgrades/ability_upgrade.gd" id="1_04we8"]
 
 [resource]
 script = ExtResource("1_04we8")
-id = "sword_damege"
+id = "sword_damage"
 name = "剑-伤害"
 description = "长剑伤害+2"

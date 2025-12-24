@@ -25,7 +25,7 @@ arena_time_manager = NodePath("../ArenaTimeManager")
 experience_manager = NodePath("../ExperienceManager")
 
 [node name="ArenaTimeManager" parent="." unique_id=1208140818 instance=ExtResource("6_nyu32")]
-difficulty_interval = 1
+difficulty_interval = 3
 
 [node name="EnemyManager" parent="." unique_id=810223931 node_paths=PackedStringArray("arena_time_manager") instance=ExtResource("4_8gcrf")]
 rat_enemy_scene = ExtResource("7_hxu8e")
@@ -48,6 +48,6 @@ y_sort_enabled = true
 
 [node name="Player" parent="Entities" unique_id=1957917723 instance=ExtResource("1_gol0p")]
 unique_name_in_owner = true
-position = Vector2(333, 212)
+position = Vector2(304, 170)
 
 [node name="Foreground" type="Node2D" parent="." unique_id=1298442687 groups=["foreground_layer"]]

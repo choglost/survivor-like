@@ -3,6 +3,7 @@ extends Node2D
 @onready var collosion_shape_2d = $Area2D/CollisionShape2D
 @onready var sprite = $Sprite2D
 
+@export var experience_val: int = 1
 
 func _ready() -> void:
   $Area2D.area_entered.connect(on_area_entered)
@@ -37,7 +38,7 @@ func on_area_entered(area: Area2D) -> void:
 
 
 func collected() -> void:
-  GameEvents.emit_experience_gained(1) # 触发信号
+  GameEvents.emit_experience_gained(experience_val) # 触发信号
   queue_free()
 
 func disable_collection() -> void:

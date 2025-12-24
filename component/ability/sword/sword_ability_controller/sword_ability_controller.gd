@@ -1,14 +1,19 @@
 extends Node
 
-@export var sword_rage: float = 150
-
+## 攻击距离
+@export var base_sword_rage: float = 150
+## 初始冷却间隔
 @export var base_wait_time: float = 1.5
-
-@export var current_sword_wait_time: float = 1.5
+## 当前冷却间隔
+@export var current_wait_time: float = base_wait_time
 
 @export_range(0, 1) var percent_reduction: float = 0.1
-
+# 剑实体
 @export var sword_ability_scene: PackedScene
+
+var base_damage: float = 5
+var current_damage: float = base_damage
+var additional_damage: float = 2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,6 +21,7 @@ func _ready() -> void:
   $Timer.wait_time = base_wait_time
   $Timer.timeout.connect(on_timer_timeout)
   GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
+
 
 # 冷却结束，触发攻击
 func on_timer_timeout() -> void:
@@ -27,7 +33,7 @@ func on_timer_timeout() -> void:
   var enemies = get_tree().get_nodes_in_group("enemy")
   
   enemies = enemies.filter(func(enemy: Node2D):
-      return enemy.global_position.distance_squared_to(player.global_position) < pow(sword_rage, 2)
+      return enemy.global_position.distance_squared_to(player.global_position) < pow(base_sword_rage, 2)
   )
 
   if enemies.size() == 0:
@@ -52,12 +58,18 @@ func on_timer_timeout() -> void:
   sword_instance.global_position = player.global_position + enemy_direction_vector - enemy_direction_vector.normalized() * 20
   sword_instance.rotation = enemy_direction_vector.angle()
 
+  # 配置攻击的伤害
+  sword_instance.hitbox_component.damage = current_damage
+
 # 技能升级
 func on_ability_upgrade_added(upgrade: AbilityUpgrade, current_upgrades: Dictionary):
   if upgrade.id == "sword_rate":
-    current_sword_wait_time = base_wait_time * pow((1 - percent_reduction), current_upgrades["sword_rate"]["quantity"])
-    $Timer.wait_time = current_sword_wait_time
+    current_wait_time = base_wait_time * pow((1 - percent_reduction), current_upgrades["sword_rate"]["quantity"])
+    $Timer.wait_time = current_wait_time
     $Timer.start() # 重置循环时间
-    print("sword_rate已升级", current_sword_wait_time)
+    print("sword_rate已升级到", current_wait_time)
+  elif upgrade.id == "sword_damage":
+    current_damage += additional_damage
+    print("sword_damage已升级到", current_damage)
   else:
     return

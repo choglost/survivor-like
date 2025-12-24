@@ -3,8 +3,10 @@ extends Node2D
 func _ready() -> void:
   pass
 
-func start(text: String) -> void:
-  $Label.text = text
+func start(damage: float) -> void:
+  var format_string = "%0.0f"
+
+  $Label.text = format_string % damage
   var tween = create_tween()
 
   # 伤害数字先浮动上升16px

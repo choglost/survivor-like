@@ -45,7 +45,7 @@ func check_damage():
   var floating_text_instance = floating_text_scene.instantiate() as Node2D
   get_tree().get_first_node_in_group("foreground_layer").add_child(floating_text_instance)
   floating_text_instance.global_position = global_position + Vector2.UP * 10
-  floating_text_instance.start(str(hitbox_component.damage))
+  floating_text_instance.start(hitbox_component.damage)
 
 func set_can_hurt():
   can_hurt = true

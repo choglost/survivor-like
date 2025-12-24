@@ -59,7 +59,7 @@ func get_spawn_position() -> Vector2:
 func on_arena_difficulty_increased(arena_difficulty: int) -> void:
   var time_off = (.1 / 12) * arena_difficulty
   time_off = min(time_off, .7)
-  timer.wait_time = base_spawn_time - time_off
+  timer.wait_time = max(base_spawn_time - time_off, 0.1)
 
   # 20秒后刷巫师怪
   if arena_difficulty == 4:

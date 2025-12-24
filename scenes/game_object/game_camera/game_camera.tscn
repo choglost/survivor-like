@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://cob80rr3cdujr" path="res://scenes/game_object/game_camera/game_camera.gd" id="1_17y56"]
 
-[node name="GameCamera" type="Camera2D"]
-position_smoothing_enabled = true
-position_smoothing_speed = 10.0
+[node name="GameCamera" type="Camera2D" unique_id=1939889722]
+position_smoothing_speed = 1.0
 script = ExtResource("1_17y56")

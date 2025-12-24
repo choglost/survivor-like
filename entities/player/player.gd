@@ -1,26 +1,33 @@
 extends CharacterBody2D
 
-@export var speed = 200.0
-
-const ACCELERATION = 30
+@export var base_speed = 100.0
+var speed_increase_percent = 0.2
+# const ACCELERATION = 30
 
 # 获取子节点
 @onready var health_component = $HealthComponent # 供main.gd访问
-@onready var ability_manager = $AbilityManager
+@onready var ability = $Ability
 @onready var animation_player = $AnimationPlayer
 @onready var visuals = $Visuals
+@onready var movement_component = $MovementComponent
 
 func _ready() -> void:
+  base_speed = movement_component.speed
+
   GameEvents.ability_upgrade_added.connect(on_ability_upgrade_added)
   # health_component.health_changed.connect(on_health_changed)
 
 func _process(delta: float) -> void:
   var movement_vector = get_movement_vector()
   var direction = movement_vector.normalized() # 标准化
-  var target_velocity = direction * speed
+  
 
-  velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION))
-  move_and_slide()
+  movement_component.accelerate_in_direction(direction)
+  movement_component.move(self)
+  # var target_velocity = direction * speed
+  # velocity = velocity.lerp(target_velocity, 1 - exp(-delta * ACCELERATION))
+  # move_and_slide()
+
 
   # 播放动画
   if velocity.length() > 0.1:
@@ -41,9 +48,13 @@ func get_movement_vector() -> Vector2:
 
 # func on_health_changed(health: int) -> void:
 
-# 增加新能力
+# 如果触发技能升级信号
 func on_ability_upgrade_added(ability_upgrade: AbilityUpgrade, current_upgrades: Dictionary):
-  if not ability_upgrade is Ability:
-    return
-
-  ability_manager.add_child(ability_upgrade.ability_controller_scene.instantiate())
+  # 如果是获得新技能（旧技能类型是AbilityUpgrade，新技能类型是Ability）
+  if ability_upgrade is Ability:
+    ability.add_child(ability_upgrade.ability_controller_scene.instantiate())
+    print("获得新技能" + ability_upgrade.id)
+  elif ability_upgrade.id == "player_speed":
+    # base_speed *= ability_upgrade.value
+    movement_component.speed = base_speed + base_speed * speed_increase_percent * current_upgrades["player_speed"]["quantity"]
+    print("移速提升" + str(speed_increase_percent * 100) + "%")

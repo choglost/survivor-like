@@ -6,14 +6,17 @@ var target_position: Vector2 = Vector2.ZERO
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+  acquire_target()
+  global_position = target_position # 赋初值，避免刚进入游戏时摄像头移动
   make_current()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
   acquire_target()
-  # global_position = global_position.lerp(target_position, 1.0 - exp(-delta * RATE)) # 帧率无关的线性插值
-  global_position = target_position
+  # 代码实现平滑移动，也可在引擎内设置Positon Smoothing，但那样刚进入游戏也会有一个移动
+  global_position = global_position.lerp(target_position, 1.0 - exp(-delta * RATE)) # 帧率无关的线性插值
+  # global_position = target_position # 直接赋值
 
 func acquire_target():
   var player_node = get_tree().get_nodes_in_group("player")
