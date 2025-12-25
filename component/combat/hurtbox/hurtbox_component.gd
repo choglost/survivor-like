@@ -2,10 +2,13 @@ extends Area2D
 
 class_name HurtboxComponent
 
-# 受伤无敌时间
-@export var hurt_interval: float = 0.1
+
+signal get_hurt
 
 @export var health_component: Node
+## 受伤无敌时间
+@export var hurt_interval: float = 0.1
+
 
 @onready var damage_interval_timer: Timer = $DamageIntervalTimer
 
@@ -34,6 +37,8 @@ func check_damage():
   if can_hurt == false:
     return
   
+  # 发出播放伤害音效的信号
+  get_hurt.emit()
   # 造成伤害
   health_component.take_damage(hitbox_component.damage)
 
@@ -47,5 +52,6 @@ func check_damage():
   floating_text_instance.global_position = global_position + Vector2.UP * 10
   floating_text_instance.start(hitbox_component.damage)
 
+  
 func set_can_hurt():
   can_hurt = true

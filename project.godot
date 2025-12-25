@@ -21,11 +21,11 @@ config/icon="res://icon.svg"
 
 [audio]
 
-buses/default_bus_layout="res://resources/default_bus_layout.tres"
+buses/default_bus_layout=""
 
 [autoload]
 
-GameEvents="*res://scenes/game_object/game_events/game_events.tscn"
+GameEvents="*res://scripts/autoload/game_events/game_events.tscn"
 MusicPlayer="*uid://c6qis23vebqs6"
 
 [debug]

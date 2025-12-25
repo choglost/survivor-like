@@ -31,11 +31,11 @@ func take_damage(damage: float) -> void:
   health_changed.emit()
   if current_health <= 0:
     died.emit()
-    Callable(check_death).call_deferred() # 延迟调用，防止掉落物还没生成，物体就已销毁
+    # Callable(check_death).call_deferred() # 延迟调用，防止掉落物还没生成，物体就已销毁
 
-func check_death() -> void:
-  # print(get_parent().name + " 死了")
-  get_parent().queue_free()
+# func check_death() -> void:
+#   # print(get_parent().name + " 死了")
+#   get_parent().queue_free()
 
 func get_health_percent() -> float:
   if current_health <= 0:

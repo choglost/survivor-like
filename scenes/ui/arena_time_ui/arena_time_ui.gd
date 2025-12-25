@@ -7,8 +7,12 @@ extends CanvasLayer
 func _process(delta: float) -> void:
   if arena_time_manager == null:
     return
+  # 已经过去的时间
   var time_elapsed = arena_time_manager.get_time_elapsed()
-  label.text = sec2str(time_elapsed)
+  # 剩下的时间
+  var time_left = arena_time_manager.timer.time_left
+  
+  label.text = sec2str(time_left)
 
 func sec2str(time: float) -> String:
   var minutes = floor(time / 60)

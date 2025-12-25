@@ -5,6 +5,10 @@ extends CharacterBody2D
 
 var is_moving: bool = false
 
+func _ready() -> void:
+  $HealthComponent.died.connect(on_died)
+  $HealthComponent.health_changed.connect(on_health_changed)
+
 func _process(delta: float) -> void:
   if is_moving:
     movement_component.accelerate_to_player()
@@ -19,3 +23,11 @@ func _process(delta: float) -> void:
 
 func set_is_moving(value: bool) -> void:
   is_moving = value
+
+func on_health_changed() -> void:
+  $MyAudioStreamPlayer2D.play_random_audio()
+  
+
+func on_died() -> void:
+  await $MyAudioStreamPlayer2D.finished
+  queue_free()

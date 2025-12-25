@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://daj3oaye0scy3"]
+
+[ext_resource type="Script" uid="uid://b1ja2et26aqag" path="res://scenes/game_object/random_audio_player/my_audio_stream_player_2d.gd" id="1_3kmri"]
+[ext_resource type="AudioStream" uid="uid://bwdigvosgfpt7" path="res://assets/audio/click4.ogg" id="2_ptm3k"]
+
+[node name="MyAudioStreamPlayer2D" type="AudioStreamPlayer2D" unique_id=1933533216]
+max_distance = 300.0
+bus = &"sfx"
+script = ExtResource("1_3kmri")
+streams = Array[AudioStream]([ExtResource("2_ptm3k")])

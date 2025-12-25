@@ -2,12 +2,13 @@
 
 [ext_resource type="Script" uid="uid://hcbhnbx10sm1" path="res://entities/experience/experience.gd" id="1_sk4pw"]
 [ext_resource type="Texture2D" uid="uid://cshmngq44sx7c" path="res://entities/experience/green_vial.png" id="2_8t51g"]
+[ext_resource type="PackedScene" uid="uid://daj3oaye0scy3" path="res://scenes/game_object/random_audio_player/my_audio_stream_player_2d.tscn" id="3_r3dmj"]
+[ext_resource type="AudioStream" uid="uid://bdlh07klqmaib" path="res://assets/audio/pickup_exp.wav" id="4_qcca5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_sk4pw"]
 
 [node name="Experience" type="Node2D" unique_id=96114647]
 script = ExtResource("1_sk4pw")
-experience_val = 5
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1949964669]
 texture = ExtResource("2_8t51g")
@@ -18,3 +19,7 @@ collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1472380355]
 shape = SubResource("CircleShape2D_sk4pw")
+
+[node name="RandomAudioPlayerComponent" parent="." unique_id=1933533216 instance=ExtResource("3_r3dmj")]
+volume_db = -5.0
+streams = Array[AudioStream]([ExtResource("4_qcca5")])

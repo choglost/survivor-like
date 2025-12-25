@@ -16,6 +16,14 @@ func _ready() -> void:
 func set_defeat():
   $%TitleLabel.text = "失败"
   $%DescriptionLabel.text = "你输了！"
+  play_end_audio(true)
+
+func play_end_audio(is_defeat: bool = false) -> void:
+  if is_defeat:
+    $DefeatAudioStreamPlayer.play_random_audio()
+  else:
+    $VictoryAudioStreamPlayer.play_random_audio()
+    
 
 func on_restart_button_pressed() -> void:
   get_tree().paused = false

@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b4dcxyb3ufgo8"]
+
+[ext_resource type="Script" uid="uid://doov2gqtqjoj4" path="res://scenes/ui/button_with_sound.gd" id="1_nnpsw"]
+[ext_resource type="PackedScene" uid="uid://dqluifmadgr0q" path="res://scenes/game_object/random_audio_player/my_audio_stream_player.tscn" id="2_uk55v"]
+[ext_resource type="AudioStream" uid="uid://bwdigvosgfpt7" path="res://assets/audio/click4.ogg" id="3_fumcr"]
+
+[node name="ButtonWithSound" type="Button" unique_id=226893209]
+offset_right = 6.0
+offset_bottom = 6.0
+text = "有声音的按钮"
+script = ExtResource("1_nnpsw")
+
+[node name="MyAudioStreamPlayer" parent="." unique_id=1896992841 instance=ExtResource("2_uk55v")]
+streams = Array[AudioStream]([ExtResource("3_fumcr")])

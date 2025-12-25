@@ -10,8 +10,10 @@
 [ext_resource type="PackedScene" uid="uid://461ajgkwkt70" path="res://component/hurt_anim_component/hurt_anim_component.tscn" id="6_pl6kp"]
 [ext_resource type="PackedScene" uid="uid://bpm1ot3spkr88" path="res://component/combat/hitbox/hitbox_component.tscn" id="7_3wfaa"]
 [ext_resource type="Shader" uid="uid://ddtwb0e5dnls0" path="res://component/hurt_anim_component/hurt_anim_component.gdshader" id="7_xj4jm"]
+[ext_resource type="PackedScene" uid="uid://daj3oaye0scy3" path="res://scenes/game_object/random_audio_player/my_audio_stream_player_2d.tscn" id="12_jj8bv"]
+[ext_resource type="AudioStream" uid="uid://ltu3mv0ut15j" path="res://assets/audio/enemy_get_hurt.wav" id="12_rqync"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_4gbwb"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jj8bv"]
 resource_local_to_scene = true
 shader = ExtResource("7_xj4jm")
 shader_parameter/lerp_percent = 0.0
@@ -128,7 +130,7 @@ health_component = NodePath("../HealthComponent")
 [node name="HurtAnimComponent" parent="." unique_id=1395826664 node_paths=PackedStringArray("health_component", "sprite") instance=ExtResource("6_pl6kp")]
 health_component = NodePath("../HealthComponent")
 sprite = NodePath("../Visuals/Sprite2D")
-hurt_anim_material = SubResource("ShaderMaterial_4gbwb")
+hurt_anim_material = SubResource("ShaderMaterial_jj8bv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1735355616]
 libraries/ = SubResource("AnimationLibrary_ee1ac")
@@ -158,3 +160,6 @@ offset = Vector2(0, -4)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1859684333]
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_obku4")
+
+[node name="RandomAudioPlayerComponent" parent="." unique_id=1933533216 instance=ExtResource("12_jj8bv")]
+streams = Array[AudioStream]([ExtResource("12_rqync")])

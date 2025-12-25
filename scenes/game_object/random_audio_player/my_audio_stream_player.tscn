@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dqluifmadgr0q"]
+
+[ext_resource type="Script" uid="uid://dt83uagwqbno7" path="res://scenes/game_object/random_audio_player/my_audio_stream_player.gd" id="1_g0s1i"]
+
+[node name="MyAudioStreamPlayer" type="AudioStreamPlayer" unique_id=1896992841]
+bus = &"sfx"
+script = ExtResource("1_g0s1i")

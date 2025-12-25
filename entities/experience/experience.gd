@@ -33,12 +33,16 @@ func on_area_entered(area: Area2D) -> void:
   tween.tween_method(tween_collected.bind(global_position), 0.0, 1.0, 0.8) \
     .set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_BACK)
   tween.tween_property(sprite, "scale", Vector2(0.1, 0.1), 0.1).set_delay(0.7)
+  
   tween.chain() # 在上面两个并行动画执行完再进入下面。防止过早结束
+  
   tween.tween_callback(collected)
-
-
+  
 func collected() -> void:
+  $RandomAudioPlayerComponent.play_random_audio()
+  await $RandomAudioPlayerComponent.finished
   GameEvents.emit_experience_gained(experience_val) # 触发信号
+
   queue_free()
 
 func disable_collection() -> void:
