@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://cteefwbwm0w5b"]
 
 [ext_resource type="Script" uid="uid://dbsqo1eg2p48x" path="res://scenes/ui/end_screen/end_screen.gd" id="1_4ttpn"]
-[ext_resource type="PackedScene" uid="uid://b4dcxyb3ufgo8" path="res://scenes/ui/button_with_sound.tscn" id="2_20hmq"]
+[ext_resource type="PackedScene" uid="uid://b4dcxyb3ufgo8" path="res://scenes/ui/sound_button/button_with_sound.tscn" id="2_20hmq"]
+[ext_resource type="PackedScene" uid="uid://bdmhxvc0g02bl" path="res://scenes/shaders/vignette/vignette.tscn" id="2_wc35x"]
 [ext_resource type="PackedScene" uid="uid://dqluifmadgr0q" path="res://scenes/game_object/random_audio_player/my_audio_stream_player.tscn" id="3_s6fqt"]
 [ext_resource type="AudioStream" uid="uid://2sj5oiyw4cij" path="res://assets/audio/jingles_defeat.ogg" id="4_kyrhy"]
 [ext_resource type="AudioStream" uid="uid://cvsjvinoa1524" path="res://assets/audio/jingles_victory.ogg" id="5_wc35x"]
@@ -113,6 +114,7 @@ text = "胜利"
 [node name="DescriptionLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=2039924927]
 unique_name_in_owner = true
 layout_mode = 2
+theme_type_variation = &"LabelWithOutline"
 text = "你成功幸存下来了！"
 horizontal_alignment = 1
 
@@ -140,3 +142,5 @@ streams = Array[AudioStream]([ExtResource("4_kyrhy")])
 
 [node name="VictoryAudioStreamPlayer" parent="." unique_id=2067323102 instance=ExtResource("3_s6fqt")]
 streams = Array[AudioStream]([ExtResource("5_wc35x")])
+
+[node name="Vignette" parent="." unique_id=2142869469 instance=ExtResource("2_wc35x")]

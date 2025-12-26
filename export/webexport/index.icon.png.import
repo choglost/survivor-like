@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlfulbedte51a"
-path="res://.godot/imported/SurvivorLike.png-d3b2f981d2bd30a80086981682b977ac.ctex"
+uid="uid://cacalphgeby2l"
+path="res://.godot/imported/index.icon.png-8961d91375fc58ba32ae86346634d6e9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://export/web/SurvivorLike.png"
-dest_files=["res://.godot/imported/SurvivorLike.png-d3b2f981d2bd30a80086981682b977ac.ctex"]
+source_file="res://export/webexport/index.icon.png"
+dest_files=["res://.godot/imported/index.icon.png-8961d91375fc58ba32ae86346634d6e9.ctex"]
 
 [params]
 

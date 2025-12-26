@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://cjt4pjxvr2sdo"]
+
+[ext_resource type="Script" uid="uid://i1wyksxwhjka" path="res://scenes/ui/meta_menu/meta_menu.gd" id="1_vq5vi"]
+[ext_resource type="Script" uid="uid://c0p2hijooxvna" path="res://resources/meta_upgrades/meta_upgrade.gd" id="2_ojqlf"]
+[ext_resource type="Resource" uid="uid://dd2hes415ft8k" path="res://resources/meta_upgrades/experience_gain.tres" id="3_x87wq"]
+
+[node name="MetaMenu" type="CanvasLayer" unique_id=1930824310]
+layer = 2
+script = ExtResource("1_vq5vi")
+upgarades = Array[ExtResource("2_ojqlf")]([ExtResource("3_x87wq")])
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1077543210]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="GridContainer" type="GridContainer" parent="MarginContainer" unique_id=188453286]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 40
+columns = 3

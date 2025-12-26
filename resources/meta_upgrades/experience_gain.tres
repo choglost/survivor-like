@@ -1,0 +1,10 @@
+[gd_resource type="Resource" format=3 uid="uid://dd2hes415ft8k"]
+
+[ext_resource type="Script" uid="uid://c0p2hijooxvna" path="res://resources/meta_upgrades/meta_upgrade.gd" id="1_j6tqy"]
+
+[resource]
+script = ExtResource("1_j6tqy")
+id = "experience_gain"
+max_level = 2
+title = "经验老到"
+description = "升级所需经验减少5%"

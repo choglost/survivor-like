@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cdnomki5f2243"]
+
+[ext_resource type="Shader" uid="uid://4rhsis6b5ps5" path="res://scenes/shaders/crt/crt.gdshader" id="1_bquxm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_88js6"]
+shader = ExtResource("1_bquxm")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.1010000047975
+shader_parameter/scanlines_width = 0.074000003515
+shader_parameter/grille_opacity = 0.122000005795
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = false
+shader_parameter/roll = true
+shader_parameter/roll_speed = 8.0
+shader_parameter/roll_size = 22.03200104652
+shader_parameter/roll_variation = 2.12300009758262
+shader_parameter/distort_intensity = 0.05
+shader_parameter/noise_opacity = 0.29600001406
+shader_parameter/noise_speed = 5.445
+shader_parameter/static_noise_intensity = 0.0690000032775
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 1.4
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 1.0
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.4
+shader_parameter/vignette_opacity = 0.3250000154375
+
+[node name="Crt" type="CanvasLayer" unique_id=2142869469]
+layer = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1606562110]
+material = SubResource("ShaderMaterial_88js6")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

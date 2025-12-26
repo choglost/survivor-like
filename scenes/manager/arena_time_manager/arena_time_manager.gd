@@ -28,3 +28,4 @@ func on_timer_timeout() -> void:
   var end_screen_instance = end_screen.instantiate()
   add_child(end_screen_instance)
   end_screen_instance.play_end_audio()
+  MetaProgression.save_file()

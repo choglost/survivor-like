@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccthuqb1t522g"
-path="res://.godot/imported/coin.png-742f433fdb40c23302668963ccede222.ctex"
+uid="uid://d1rem70e8kbgr"
+path="res://.godot/imported/index.apple-touch-icon.png-c476f109fc52f74a00477a329b9325fb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/images/coin.png"
-dest_files=["res://.godot/imported/coin.png-742f433fdb40c23302668963ccede222.ctex"]
+source_file="res://export/webexport/index.apple-touch-icon.png"
+dest_files=["res://.godot/imported/index.apple-touch-icon.png-c476f109fc52f74a00477a329b9325fb.ctex"]
 
 [params]
 

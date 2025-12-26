@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ctu6mutqg6crl"
-path="res://.godot/imported/SurvivorLike.icon.png-dea33214127106fc5887fe16227a1ac1.ctex"
+uid="uid://ccthuqb1t522g"
+path="res://.godot/imported/coin.png-c2e2134f1a8973b4f03ef21d40297897.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://export/web/SurvivorLike.icon.png"
-dest_files=["res://.godot/imported/SurvivorLike.icon.png-dea33214127106fc5887fe16227a1ac1.ctex"]
+source_file="res://entities/coin/coin.png"
+dest_files=["res://.godot/imported/coin.png-c2e2134f1a8973b4f03ef21d40297897.ctex"]
 
 [params]
 

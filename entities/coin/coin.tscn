@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cjk8hm7oa077s"]
+
+[ext_resource type="Script" uid="uid://qu7ahrg0iwrj" path="res://entities/coin/coin.gd" id="1_sogop"]
+[ext_resource type="Texture2D" uid="uid://ccthuqb1t522g" path="res://entities/coin/coin.png" id="2_sogop"]
+[ext_resource type="PackedScene" uid="uid://daj3oaye0scy3" path="res://scenes/game_object/random_audio_player/my_audio_stream_player_2d.tscn" id="3_y5gsc"]
+[ext_resource type="AudioStream" uid="uid://bdlh07klqmaib" path="res://assets/audio/pickup_exp.wav" id="4_qjfj0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sk4pw"]
+
+[node name="Coin" type="Node2D" unique_id=96114647]
+script = ExtResource("1_sogop")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1949964669]
+texture = ExtResource("2_sogop")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1853260483]
+collision_layer = 0
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1472380355]
+shape = SubResource("CircleShape2D_sk4pw")
+
+[node name="RandomAudioPlayerComponent" parent="." unique_id=1933533216 instance=ExtResource("3_y5gsc")]
+volume_db = -5.0
+streams = Array[AudioStream]([ExtResource("4_qjfj0")])

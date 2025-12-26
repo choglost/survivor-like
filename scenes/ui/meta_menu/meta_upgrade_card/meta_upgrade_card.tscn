@@ -1,9 +1,13 @@
-[gd_scene format=3 uid="uid://c0wihkf066ocg"]
+[gd_scene format=3 uid="uid://dfyns8dqy8ijm"]
 
-[ext_resource type="Script" uid="uid://c5gi7a3x5p50h" path="res://scenes/ui/upgrade_screen/ability_upgrade_card/ability_upgrade_card.gd" id="1_xbdcf"]
-[ext_resource type="PackedScene" uid="uid://dqluifmadgr0q" path="res://scenes/game_object/random_audio_player/my_audio_stream_player.tscn" id="2_lk7m2"]
-[ext_resource type="AudioStream" uid="uid://dsgpej0wbck4s" path="res://assets/audio/hover.mp3" id="3_k85xq"]
-[ext_resource type="AudioStream" uid="uid://bwdigvosgfpt7" path="res://assets/audio/click4.ogg" id="4_31en6"]
+[ext_resource type="Script" uid="uid://b1cae14812id5" path="res://scenes/ui/meta_menu/meta_upgrade_card/meta_upgrade_card.gd" id="1_ef167"]
+[ext_resource type="Texture2D" uid="uid://ccthuqb1t522g" path="res://entities/coin/coin.png" id="2_dnxc2"]
+[ext_resource type="PackedScene" uid="uid://b4dcxyb3ufgo8" path="res://scenes/ui/sound_button/button_with_sound.tscn" id="2_nk4ki"]
+[ext_resource type="PackedScene" uid="uid://dqluifmadgr0q" path="res://scenes/game_object/random_audio_player/my_audio_stream_player.tscn" id="2_une1a"]
+[ext_resource type="AudioStream" uid="uid://dsgpej0wbck4s" path="res://assets/audio/hover.mp3" id="3_407vu"]
+[ext_resource type="AudioStream" uid="uid://bwdigvosgfpt7" path="res://assets/audio/click4.ogg" id="4_y1xhx"]
+
+[sub_resource type="Theme" id="Theme_nk4ki"]
 
 [sub_resource type="Animation" id="Animation_21kmp"]
 length = 0.001
@@ -42,22 +46,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_31en6"]
-resource_name = "discard"
-length = 0.06666667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 2
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.06666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(1, 1), Vector2(1e-05, 1e-05)]
 }
 
 [sub_resource type="Animation" id="Animation_lk7m2"]
@@ -133,7 +121,6 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h31as"]
 _data = {
 &"RESET": SubResource("Animation_21kmp"),
-&"discard": SubResource("Animation_31en6"),
 &"in": SubResource("Animation_lk7m2"),
 &"selected": SubResource("Animation_u2mct")
 }
@@ -189,12 +176,12 @@ _data = {
 &"hover": SubResource("Animation_k85xq")
 }
 
-[node name="AbilityUpgradeCard" type="PanelContainer" unique_id=1299598999 groups=["upgrade_card"]]
+[node name="MetaUpgradeCard" type="PanelContainer" unique_id=1299598999 groups=["upgrade_card"]]
 custom_minimum_size = Vector2(150, 150)
 offset_right = 150.0
 offset_bottom = 150.0
 pivot_offset = Vector2(75, 75)
-script = ExtResource("1_xbdcf")
+script = ExtResource("1_ef167")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=769494591]
 layout_mode = 2
@@ -242,6 +229,34 @@ theme_override_colors/font_outline_color = Color(0.14901961, 0.16862746, 0.26666
 text = "这是一段很长很长的技能描述，说明了技能有多牛逼"
 autowrap_mode = 1
 
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=1203079347]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=1996930469]
+layout_mode = 2
+texture = ExtResource("2_dnxc2")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer" unique_id=2016713392]
+layout_mode = 2
+theme_override_colors/font_outline_color = Color(0.24705882, 0.14901961, 0.19215687, 1)
+theme_override_constants/outline_size = 5
+theme_override_font_sizes/font_size = 12
+text = "50/200"
+
+[node name="ProgressBar" type="ProgressBar" parent="MarginContainer/VBoxContainer" unique_id=262784155]
+unique_name_in_owner = true
+layout_mode = 2
+theme = SubResource("Theme_nk4ki")
+max_value = 1.0
+value = 0.83
+show_percentage = false
+
+[node name="PurchaseButton" parent="MarginContainer/VBoxContainer" unique_id=226893209 instance=ExtResource("2_nk4ki")]
+unique_name_in_owner = true
+layout_mode = 2
+text = "购买"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2055070232]
 unique_name_in_owner = true
 libraries/ = SubResource("AnimationLibrary_h31as")
@@ -249,9 +264,9 @@ libraries/ = SubResource("AnimationLibrary_h31as")
 [node name="HoverAnimationPlayer" type="AnimationPlayer" parent="." unique_id=1322296567]
 libraries/ = SubResource("AnimationLibrary_31en6")
 
-[node name="HoverAudioStreamPlayer" parent="." unique_id=1896992841 instance=ExtResource("2_lk7m2")]
+[node name="HoverAudioStreamPlayer" parent="." unique_id=1896992841 instance=ExtResource("2_une1a")]
 volume_db = 8.225
-streams = Array[AudioStream]([ExtResource("3_k85xq")])
+streams = Array[AudioStream]([ExtResource("3_407vu")])
 
-[node name="ClickAudioStreamPlayer" parent="." unique_id=808222829 instance=ExtResource("2_lk7m2")]
-streams = Array[AudioStream]([ExtResource("4_31en6")])
+[node name="ClickAudioStreamPlayer" parent="." unique_id=808222829 instance=ExtResource("2_une1a")]
+streams = Array[AudioStream]([ExtResource("4_y1xhx")])
