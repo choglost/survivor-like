@@ -1,7 +1,7 @@
 extends Node
 
 ## 攻击距离
-@export var base_sword_rage: float = 150
+@export var base_sword_range: float = 150
 ## 初始冷却间隔
 @export var base_wait_time: float = 1.5
 ## 当前冷却间隔
@@ -33,7 +33,7 @@ func on_timer_timeout() -> void:
   var enemies = get_tree().get_nodes_in_group("enemy")
   
   enemies = enemies.filter(func(enemy: Node2D):
-      return enemy.global_position.distance_squared_to(player.global_position) < pow(base_sword_rage, 2)
+      return enemy.global_position.distance_squared_to(player.global_position) < pow(base_sword_range, 2)
   )
 
   if enemies.size() == 0:

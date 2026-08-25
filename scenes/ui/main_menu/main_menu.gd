@@ -1,6 +1,7 @@
 extends CanvasLayer
 
 var options_scene = preload("res://scenes/ui/options_menu/options_menu.tscn")
+var meta_menu_scene = preload("res://scenes/ui/meta_menu/meta_menu.tscn")
 
 
 func _ready() -> void:
@@ -18,9 +19,9 @@ func on_options_pressed() -> void:
   options_menu_instance.back_pressed.connect(on_options_closed.bind(options_menu_instance))
 
 func on_meta_pressed() -> void:
-  var options_menu_instance = options_scene.instantiate()
-  add_child(options_menu_instance)
-  options_menu_instance.back_pressed.connect(on_options_closed.bind(options_menu_instance))
+  var meta_menu_instance = meta_menu_scene.instantiate()
+  add_child(meta_menu_instance)
+  meta_menu_instance.back_pressed.connect(on_options_closed.bind(meta_menu_instance))
 
 
 func on_quit_pressed() -> void:

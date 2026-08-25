@@ -37,14 +37,14 @@ func update_display():
 # 获取音量
 func get_bus_volume_percent(bus_name: String):
   var bus_index = AudioServer.get_bus_index(bus_name)
-  var volumn_db = AudioServer.get_bus_volume_db(bus_index)
-  return db_to_linear(volumn_db)
+  var volume_db = AudioServer.get_bus_volume_db(bus_index)
+  return db_to_linear(volume_db)
 
 # 设置音量
 func set_bus_volume_percent(bus_name: String, percent: float):
   var bus_index = AudioServer.get_bus_index(bus_name)
-  var volumn_db = linear_to_db(percent)
-  AudioServer.set_bus_volume_db(bus_index, volumn_db)
+  var volume_db = linear_to_db(percent)
+  AudioServer.set_bus_volume_db(bus_index, volume_db)
 
 func on_audio_slider_changed(value: float, bus_name: String) -> void:
   set_bus_volume_percent(bus_name, value)

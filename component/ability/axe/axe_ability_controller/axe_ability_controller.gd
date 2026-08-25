@@ -1,6 +1,6 @@
 extends Node
 
-@export var attack_rage: float = 150
+@export var attack_range: float = 150
 
 @export var base_wait_time: float = 3
 
